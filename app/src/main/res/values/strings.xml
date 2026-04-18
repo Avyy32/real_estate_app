@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">realestateapp</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_in_to_continue">Sign in to continue to Conquer</string>
+    <string name="email">Email</string>
+    <string name="email_placeholder">your@email.com</string>
+    <string name="password">Password</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="or">OR</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_an_account">Create an\naccount</string>
+    <string name="username_or_email">Username or Email</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="create_account">Create Account</string>
+    <string name="or_continue_with">OR Continue with</string>
+    <string name="already_have_account">I Already Have an Account</string>
+    <string name="login_link">Login</string>
+    <string name="profile">Profile</string>
+    <string name="account_details">Account Details</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="privacy_security">Privacy &amp; Security</string>
+    <string name="help_support">Help &amp; Support</string>
+    <string name="log_out">Log Out</string>
+
+    <string name="complete_your_profile">Complete Your Profile</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="lets_set_up_your_profile">Let\'s set up your profile</string>
+    <string name="contact_name">Contact Name</string>
+    <string name="your_name">Your Name</string>
+    <string name="complete_setup">Complete Setup</string>
+
+    <string name="search_properties">Search Properties...</string>
+    <string name="featured_properties">Featured Properties</string>
+    <string name="see_all">See All</string>
+    <string name="house">House</string>
+    <string name="apartment">Apartment</string>
+    <string name="villa">Villa</string>
+    <string name="all">All</string>
+
+    <string name="search_filter">Search &amp; Filter</string>
+    <string name="property_for">Property For</string>
+    <string name="buy">Buy</string>
+    <string name="rent">Rent</string>
+    <string name="pg">PG</string>
+    <string name="price_range">Price Range</string>
+    <string name="apply_filters">Apply Filters</string>
+    <string name="property_type">Property Type</string>
+    <string name="bedrooms">Bedrooms</string>
+    <string name="amenities">Amenities</string>
+
+    <string name="contact_dealer">Contact Dealer</string>
+    <string name="get_in_touch">Get in Touch with the Dealer</string>
+    <string name="full_name">Full Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="message">Message</string>
+    <string name="send_inquiry">Send Inquiry</string>
+</resources>

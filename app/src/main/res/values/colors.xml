@@ -1,0 +1,15 @@
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- your existing -->
+    <color name="primary">#7F3DFF</color>
+
+    <!-- 🔥 ADD THIS -->
+    <color name="purple_500">#6200EE</color>
+
+    <color name="gray_text">#91919F</color>
+    <color name="border_color">#E1E1E1</color>
+    <color name="light_gray">#F1F1F5</color>
+    <color name="red">#FD3C4A</color>
+</resources>
