@@ -21,16 +21,19 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         bottomNav = findViewById(R.id.bottomNav);
+        bottomNav.setSelectedItemId(R.id.nav_home);
 
         bottomNav.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.nav_home) {
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_home) {
                 return true;
-            }
-            if (item.getItemId() == R.id.nav_search) {
-                Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show();
+            } else if (itemId == R.id.nav_pay) {
+                startActivity(new Intent(this, PayCreditActivity.class));
                 return true;
-            }
-            if (item.getItemId() == R.id.nav_profile) {
+            } else if (itemId == R.id.nav_enquiries) {
+                startActivity(new Intent(this, EnquiryActivity.class));
+                return true;
+            } else if (itemId == R.id.nav_profile) {
                 startActivity(new Intent(this, ProfileActivity.class));
                 return true;
             }
@@ -40,7 +43,6 @@ public class HomeActivity extends AppCompatActivity {
         View propertyCard1 = findViewById(R.id.propertyCard1);
         View propertyCard2 = findViewById(R.id.propertyCard2);
 
-        // Load images into property cards
         if (propertyCard1 != null) {
             ImageView img1 = propertyCard1.findViewById(R.id.propertyImage);
             Glide.with(this)
