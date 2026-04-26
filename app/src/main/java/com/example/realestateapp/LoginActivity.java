@@ -3,33 +3,38 @@ package com.example.realestateapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button btnLogin;
-    TextView tvSignUpLink;
+    private Button btnContinue;
+    private Button btnSkip;
+    private EditText phoneInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btnLogin = findViewById(R.id.btnLogin);
-        tvSignUpLink = findViewById(R.id.tvSignUpLink);
+        btnContinue = findViewById(R.id.btnContinue);
+        btnSkip = findViewById(R.id.btnSkip);
+        phoneInput = findViewById(R.id.phoneInput);
 
-        // 🔥 FIX: Open HomeActivity instead of finishing
-        btnLogin.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            startActivity(intent);
-        });
-
-        // Signup link
-        if (tvSignUpLink != null) {
-            tvSignUpLink.setOnClickListener(v -> {
-                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+        // Safely set up listeners
+        if (btnContinue != null) {
+            btnContinue.setOnClickListener(v -> {
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                 startActivity(intent);
+                finish();
+            });
+        }
+
+        if (btnSkip != null) {
+            btnSkip.setOnClickListener(v -> {
+                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
             });
         }
     }

@@ -1,15 +1,23 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    <!-- your existing -->
     <color name="primary">#7F3DFF</color>
-
-    <!-- 🔥 ADD THIS -->
     <color name="purple_500">#6200EE</color>
-
     <color name="gray_text">#91919F</color>
     <color name="border_color">#E1E1E1</color>
     <color name="light_gray">#F1F1F5</color>
     <color name="red">#FD3C4A</color>
+
+    <!-- Login Page Colors -->
+    <color name="login_blue_main">#7BAAF7</color>
+    <color name="login_blue_light">#D6E4F8</color>
+    <color name="login_bg_gradient_start">#E6F0FF</color>
+    <color name="login_bg_gradient_end">#FFFFFF</color>
+    <color name="phone_divider">#EEEEEE</color>
+
+    <!-- Post Property Selection Colors -->
+    <color name="chip_selected_bg">#E3F2FD</color>
+    <color name="chip_unselected_bg">#FFFFFF</color>
+    <color name="chip_selected_text">#1976D2</color>
+    <color name="chip_unselected_text">#1A1A1A</color>
 </resources>

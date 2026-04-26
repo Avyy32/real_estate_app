@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    android:layout_width="300dp"
     android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
     android:layout_marginBottom="16dp"
     app:cardCornerRadius="16dp"
-    app:cardElevation="0dp"
+    app:cardElevation="2dp"
     app:strokeWidth="0dp">
 
     <LinearLayout
@@ -15,49 +16,55 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="180dp">
 
             <ImageView
                 android:id="@+id/propertyImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#F5F5F5"
                 android:scaleType="centerCrop"
-                android:src="@android:drawable/ic_menu_gallery"
-                android:background="#EEEEEE"/>
+                android:src="@android:drawable/ic_menu_gallery" />
 
             <TextView
+                android:id="@+id/tvBadge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="12dp"
                 android:background="@drawable/badge_bg"
-                android:paddingHorizontal="8dp"
+                android:paddingHorizontal="10dp"
                 android:paddingVertical="4dp"
-                android:text="For Sale"
+                android:text="FOR SALE"
                 android:textColor="@color/white"
-                android:textSize="10sp" />
+                android:textSize="10sp"
+                android:textStyle="bold" />
         </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/white"
             android:orientation="vertical"
             android:padding="12dp">
 
             <TextView
                 android:id="@+id/tvPropertyName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:text="Modern Family House"
-                android:textColor="@color/black"
+                android:textColor="#001F3F"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvPropertyLocation"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="Sector 27, Gurgaon"
-                android:textColor="@color/gray_text"
+                android:textColor="#666666"
                 android:textSize="12sp" />
 
             <RelativeLayout
@@ -75,12 +82,14 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvPropertyStats"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:text="3 Bed | 2 Bath | 1500 sqft"
-                    android:textColor="@color/gray_text"
-                    android:textSize="12sp" />
+                    android:layout_centerVertical="true"
+                    android:text="3 BHK | 2 Floors"
+                    android:textColor="#999999"
+                    android:textSize="10sp" />
             </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
