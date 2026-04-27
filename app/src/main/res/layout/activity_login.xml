@@ -3,54 +3,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/bg_gradient"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:padding="24dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp">
-
-            <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="@string/app_name"
-                android:src="@android:drawable/ic_menu_revert"
-                app:tint="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/log_in"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
+        android:padding="32dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="@string/sign_in_to_continue"
-            android:textColor="@color/gray_text"
-            android:textSize="16sp" />
+            android:layout_marginTop="48dp"
+            android:text="Welcome Back"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/email"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="40dp"
+            android:text="@string/login_catchy_line"
+            android:textColor="#F0F0F0"
+            android:textSize="16sp"
+            android:gravity="center" />
 
         <EditText
             android:id="@+id/etEmail"
@@ -62,15 +42,9 @@
             android:drawablePadding="12dp"
             android:hint="@string/email_placeholder"
             android:inputType="textEmailAddress"
-            android:paddingHorizontal="16dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:text="@string/password"
+            android:paddingHorizontal="16dp"
             android:textColor="@color/black"
-            android:textSize="14sp" />
+            android:textColorHint="@color/gray_text" />
 
         <EditText
             android:id="@+id/etPassword"
@@ -82,17 +56,20 @@
             android:drawablePadding="12dp"
             android:hint="@string/password_placeholder"
             android:inputType="textPassword"
-            android:paddingHorizontal="16dp" />
+            android:paddingHorizontal="16dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray_text" />
 
         <TextView
             android:id="@+id/tvForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginBottom="24dp"
+            android:layout_marginBottom="32dp"
             android:text="@string/forgot_password"
-            android:textColor="@color/primary"
-            android:textSize="14sp" />
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnLogin"
@@ -103,8 +80,9 @@
             android:text="@string/log_in"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -117,30 +95,37 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="1"
-                android:background="@color/border_color" />
+                android:background="#80FFFFFF" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:text="@string/or"
-                android:textColor="@color/gray_text" />
+                android:textColor="@color/white" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_weight="1"
-                android:background="@color/border_color" />
+                android:background="#80FFFFFF" />
         </LinearLayout>
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="32dp" />
 
         <TextView
             android:id="@+id/tvSignUpLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="@string/dont_have_account"
-            android:textColor="@color/gray_text"
-            android:textSize="14sp" />
+            android:text="Don't have an account? Sign Up"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 </ScrollView>

@@ -1,15 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    <!-- your existing -->
     <color name="primary">#7F3DFF</color>
-
-    <!-- 🔥 ADD THIS -->
-    <color name="purple_500">#6200EE</color>
-
+    <color name="primary_dark">#5E27C5</color>
+    <color name="accent_green">#00D1A0</color>
     <color name="gray_text">#91919F</color>
-    <color name="border_color">#E1E1E1</color>
     <color name="light_gray">#F1F1F5</color>
-    <color name="red">#FD3C4A</color>
+    <color name="border_color">#E1E1E1</color>
+    <color name="dark_bg">#212121</color>
+    <color name="card_dark">#333333</color>
+    <color name="purple_bg">#F0E8FF</color>
+    <color name="red">#FF0000</color>
 </resources>
