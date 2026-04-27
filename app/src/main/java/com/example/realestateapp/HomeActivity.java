@@ -66,6 +66,10 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(this, PostPropertyBasicActivity.class));
                 return true;
             }
+            if (item.getItemId() == R.id.nav_shortlist) {
+                startActivity(new Intent(this, MapActivity.class));
+                return true;
+            }
             if (item.getItemId() == R.id.nav_profile) {
                 startActivity(new Intent(this, ProfileActivity.class));
                 return true;
