@@ -4,7 +4,6 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -18,8 +17,9 @@ import java.util.List;
 public class PostPropertyPhotosActivity extends AppCompatActivity {
 
     private List<Uri> selectedImageUris = new ArrayList<>();
+    private Uri selectedVideoUri = null;
     
-    private final ActivityResultLauncher<Intent> galleryLauncher = registerForActivityResult(
+    private final ActivityResultLauncher<Intent> photoLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
                 if (result.getResultCode() == RESULT_OK && result.getData() != null) {
@@ -32,8 +32,17 @@ public class PostPropertyPhotosActivity extends AppCompatActivity {
                     } else if (result.getData().getData() != null) {
                         selectedImageUris.add(result.getData().getData());
                     }
-                    
                     Toast.makeText(this, selectedImageUris.size() + " Images Selected", Toast.LENGTH_SHORT).show();
+                }
+            }
+    );
+
+    private final ActivityResultLauncher<Intent> videoLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    selectedVideoUri = result.getData().getData();
+                    Toast.makeText(this, "Video Selected Successfully!", Toast.LENGTH_SHORT).show();
                 }
             }
     );
@@ -43,15 +52,22 @@ public class PostPropertyPhotosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_property_photos);
 
+        CardView btnUploadVideo = findViewById(R.id.btnUploadVideo);
         CardView btnUploadPhotos = findViewById(R.id.btnUploadPhotos);
         Button btnFinish = findViewById(R.id.btnFinish);
         EditText etDescription = findViewById(R.id.etDescription);
+
+        btnUploadVideo.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("video/*");
+            videoLauncher.launch(Intent.createChooser(intent, "Select Property Video"));
+        });
 
         btnUploadPhotos.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
             intent.setType("image/*");
             intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-            galleryLauncher.launch(Intent.createChooser(intent, "Select Photos"));
+            photoLauncher.launch(Intent.createChooser(intent, "Select Photos"));
         });
 
         btnFinish.setOnClickListener(v -> {
