@@ -7,7 +7,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -52,6 +51,13 @@ public class SearchPropertyActivity extends AppCompatActivity {
         tabCommercial.setOnClickListener(v -> { currentTab = "Commercial"; updateTabUI(); performSearch(etSearch.getText().toString()); });
 
         findViewById(R.id.btnClose).setOnClickListener(v -> finish());
+
+        // Check if opened from Budget Calculator
+        String budgetQuery = getIntent().getStringExtra("budget_query");
+        if (budgetQuery != null) {
+            etSearch.setText(budgetQuery);
+            performSearch(budgetQuery);
+        }
 
         ChipGroup popularCities = findViewById(R.id.cgPopularCities);
         for (int i = 0; i < popularCities.getChildCount(); i++) {
@@ -103,16 +109,23 @@ public class SearchPropertyActivity extends AppCompatActivity {
             rvResults.setVisibility(View.VISIBLE);
             
             List<Property> allProperties = PropertyRepository.getInstance().getProperties();
+            String lowQuery = query.toLowerCase();
+
             for (Property p : allProperties) {
-                // Check if city matches and category matches (Buy/Rent/Commercial)
                 boolean matchesCategory = false;
                 if (currentTab.equals("Buy") && p.getLookingTo().equalsIgnoreCase("Sell")) matchesCategory = true;
                 else if (currentTab.equals("Rent") && (p.getLookingTo().equalsIgnoreCase("Rent / Lease") || p.getLookingTo().equalsIgnoreCase("Paying Guest"))) matchesCategory = true;
                 else if (currentTab.equals("Commercial") && p.getPropertyType().equalsIgnoreCase("Commercial")) matchesCategory = true;
 
-                if (matchesCategory && (p.getLocation().toLowerCase().contains(query.toLowerCase()) || 
-                    p.getName().toLowerCase().contains(query.toLowerCase()))) {
-                    filteredList.add(p);
+                if (matchesCategory) {
+                    boolean matchesQuery = p.getLocation().toLowerCase().contains(lowQuery) || 
+                                         p.getName().toLowerCase().contains(lowQuery) ||
+                                         p.getFloors().toLowerCase().contains(lowQuery) ||
+                                         p.getPrice().toLowerCase().contains(lowQuery);
+                    
+                    if (matchesQuery) {
+                        filteredList.add(p);
+                    }
                 }
             }
         }

@@ -56,6 +56,12 @@
         <activity
             android:name=".ShareDetailsActivity"
             android:exported="false" />
+        <activity
+            android:name=".BudgetCalculatorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmiCalculatorActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

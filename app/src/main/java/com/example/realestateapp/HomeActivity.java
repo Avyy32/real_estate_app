@@ -2,8 +2,6 @@ package com.example.realestateapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -52,10 +50,22 @@ public class HomeActivity extends AppCompatActivity {
 
         findViewById(R.id.homeSearchBar).setOnClickListener(v -> openSearch("Buy"));
 
+        // Tools Click listeners
+        findViewById(R.id.cardBudgetCalculator).setOnClickListener(v -> {
+            startActivity(new Intent(HomeActivity.this, BudgetCalculatorActivity.class));
+        });
+        
+        findViewById(R.id.cardEmiCalculator).setOnClickListener(v -> {
+            startActivity(new Intent(HomeActivity.this, EmiCalculatorActivity.class));
+        });
+
         BottomNavigationView bottomNav = findViewById(R.id.bottomNav);
         bottomNav.setOnItemSelectedListener(item -> {
             if (item.getItemId() == R.id.nav_home) return true;
-            if (item.getItemId() == R.id.nav_search) { openSearch("Buy"); return true; }
+            if (item.getItemId() == R.id.nav_sell_rent) {
+                startActivity(new Intent(this, PostPropertyBasicActivity.class));
+                return true;
+            }
             if (item.getItemId() == R.id.nav_profile) {
                 startActivity(new Intent(this, ProfileActivity.class));
                 return true;
