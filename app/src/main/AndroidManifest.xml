@@ -42,7 +42,25 @@
             android:name=".EnquiryActivity"
             android:exported="false" />
         <activity
-            android:name=".PayCreditActivity"
+            android:name=".PostPropertyBasicActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostPropertyDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostPropertyPhotosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchPropertyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShareDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BudgetCalculatorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmiCalculatorActivity"
             android:exported="false" />
     </application>
 

@@ -2,8 +2,21 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Realestateapp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/primary</item>
     </style>
 
     <style name="Theme.Realestateapp" parent="Base.Theme.Realestateapp" />
+
+    <style name="RoundedTopCard">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">110dp</item>
+        <item name="cornerSizeTopRight">110dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="CircleImage">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 </resources>
