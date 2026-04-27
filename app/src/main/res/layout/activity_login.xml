@@ -111,6 +111,12 @@
                 android:background="#80FFFFFF" />
         </LinearLayout>
 
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="32dp" />
+
         <TextView
             android:id="@+id/tvSignUpLink"
             android:layout_width="wrap_content"
