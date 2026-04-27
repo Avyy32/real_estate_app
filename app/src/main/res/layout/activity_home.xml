@@ -222,7 +222,7 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
-                            android:src="@android:drawable/btn_star_big_on"
+                            android:src="@android:drawable/ic_dialog_map"
                             app:tint="#D48806" />
 
                         <LinearLayout

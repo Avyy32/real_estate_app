@@ -26,6 +26,13 @@
         android:layout_weight="1"
         android:text="Account Settings"
         android:textColor="@color/black"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@android:drawable/ic_media_play"
+        app:tint="@color/black" />
 
 </LinearLayout>

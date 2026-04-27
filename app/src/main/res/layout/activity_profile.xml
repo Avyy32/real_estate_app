@@ -35,7 +35,7 @@
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/btnSettings"
+                android:id="@+id/btnSettingsTop"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_alignParentEnd="true"
@@ -56,12 +56,15 @@
                 android:layout_height="100dp"
                 android:layout_marginBottom="16dp">
 
-                <View
+                <ImageView
+                    android:id="@+id/ivProfileImage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/circle_placeholder" />
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/circle_placeholder" />
 
                 <TextView
+                    android:id="@+id/tvProfileInitial"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -71,6 +74,7 @@
                     android:textStyle="bold" />
 
                 <ImageButton
+                    android:id="@+id/btnCameraIcon"
                     android:layout_width="28dp"
                     android:layout_height="28dp"
                     android:layout_gravity="bottom|end"
@@ -81,6 +85,7 @@
             </FrameLayout>
 
             <TextView
+                android:id="@+id/tvProfileName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Chakshit mehta"
@@ -89,12 +94,25 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/tvProfileEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="chakshit.kumar.24cse@bmu.edu.in"
                 android:textColor="@color/gray_text"
                 android:textSize="14sp" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btnEditProfile"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/primary"
+            android:text="@string/edit_profile"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -118,7 +136,7 @@
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 android:src="@android:drawable/ic_dialog_email"
-                app:tint="@color/gray_text" />
+                app:tint="@color/black" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -131,10 +149,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/email"
-                    android:textColor="@color/gray_text"
-                    android:textSize="12sp" />
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tvDetailsEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="chakshit.kumar.24cse@bmu.edu.in"
@@ -142,17 +162,6 @@
                     android:textSize="14sp" />
             </LinearLayout>
         </LinearLayout>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginBottom="32dp"
-            android:backgroundTint="@color/primary"
-            android:text="@string/edit_profile"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold" />
 
         <!-- Menu items -->
         <LinearLayout
