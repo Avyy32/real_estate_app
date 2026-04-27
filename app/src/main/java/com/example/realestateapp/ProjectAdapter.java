@@ -37,6 +37,7 @@ public class ProjectAdapter extends RecyclerView.Adapter<ProjectAdapter.ViewHold
 
         holder.btnViewNumber.setOnClickListener(v -> {
             Intent intent = new Intent(context, ShareDetailsActivity.class);
+            intent.putExtra("mode", "call");
             context.startActivity(intent);
         });
     }

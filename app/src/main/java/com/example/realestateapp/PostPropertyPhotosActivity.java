@@ -4,7 +4,6 @@ import android.content.ClipData;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -17,7 +16,7 @@ import java.util.List;
 
 public class PostPropertyPhotosActivity extends AppCompatActivity {
 
-    private List<Uri> selectedImageUris = new ArrayList<>();
+    private final List<Uri> selectedImageUris = new ArrayList<>();
     
     private final ActivityResultLauncher<Intent> galleryLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -70,7 +69,9 @@ public class PostPropertyPhotosActivity extends AppCompatActivity {
                     repo.draftPropertyType,
                     repo.draftLookingTo,
                     "3 BHK",
-                    repo.draftFloors
+                    repo.draftFloors,
+                    "2,500 sqft",
+                    "Individual Owner"
             );
 
             repo.addProperty(newProperty);

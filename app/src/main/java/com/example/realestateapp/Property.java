@@ -12,9 +12,16 @@ public class Property implements Serializable {
     private String lookingTo;
     private String bhk;
     private String floors;
+    private String sqft;
+    private String dealerName;
 
     public Property(String name, String location, String price, String imageUri, String description, 
                     String propertyType, String lookingTo, String bhk, String floors) {
+        this(name, location, price, imageUri, description, propertyType, lookingTo, bhk, floors, null, "Goyal Associates");
+    }
+
+    public Property(String name, String location, String price, String imageUri, String description, 
+                    String propertyType, String lookingTo, String bhk, String floors, String sqft, String dealerName) {
         this.name = name;
         this.location = location;
         this.price = price;
@@ -24,6 +31,8 @@ public class Property implements Serializable {
         this.lookingTo = lookingTo;
         this.bhk = bhk;
         this.floors = floors;
+        this.sqft = sqft;
+        this.dealerName = dealerName;
     }
 
     public String getName() { return name; }
@@ -35,4 +44,6 @@ public class Property implements Serializable {
     public String getLookingTo() { return lookingTo; }
     public String getBhk() { return bhk; }
     public String getFloors() { return floors; }
+    public String getSqft() { return sqft; }
+    public String getDealerName() { return dealerName; }
 }

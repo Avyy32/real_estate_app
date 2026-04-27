@@ -20,19 +20,62 @@
         android:gravity="center_vertical">
 
         <TextView
+            android:id="@+id/tvShareTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Please share your details"
+            android:text="Please share your details to contact the advertiser"
             android:textColor="#001233"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@android:drawable/ic_menu_edit"
             app:tint="#1976D2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F8F9FA"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@android:drawable/ic_menu_myplaces"
+            android:background="@drawable/circle_placeholder" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mukul Gupta"
+                android:textColor="#000000"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#E0E0E0"
+                android:paddingHorizontal="4dp"
+                android:text="Dealer"
+                android:textSize="10sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EVERONN VALUE VENTURES | +91-98xxxxxx10"
+                android:textColor="#666666"
+                android:textSize="11sp" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -52,7 +95,7 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="@drawable/edit_text_bg"
-            android:hint="Enter your name"
+            android:hint="Chakshit Mehta"
             android:paddingHorizontal="16dp"
             android:textColor="#1A1A1A"
             android:layout_marginTop="4dp" />
@@ -124,17 +167,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="I agree with Conqueror's Terms &amp; Conditions and Privacy Policy"
+            android:text="I agree to Conqueror's Terms &amp; Conditions and Privacy Policy"
             android:textColor="#666666"
             android:textSize="11sp" />
 
         <Button
-            android:id="@+id/btnFinalViewNumber"
+            android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="24dp"
             android:backgroundTint="#8AB4F8"
-            android:text="View Number"
+            android:text="Call"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
