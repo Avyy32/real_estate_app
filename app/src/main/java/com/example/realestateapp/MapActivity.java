@@ -3,9 +3,14 @@ package com.example.realestateapp;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -13,11 +18,16 @@ import androidx.core.content.ContextCompat;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class MapActivity extends AppCompatActivity {
     private static final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
@@ -29,17 +39,13 @@ public class MapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         Context ctx = getApplicationContext();
-        // Set user agent to prevent being blocked by tile servers
         Configuration.getInstance().setUserAgentValue(getPackageName());
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
 
         setContentView(R.layout.activity_map);
 
         map = findViewById(R.id.mapView);
-        
-        // Fix for "glitching" or flickering on some devices
         map.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
-        
         map.setTileSource(TileSourceFactory.MAPNIK);
         map.setMultiTouchControls(true);
 
@@ -54,12 +60,46 @@ public class MapActivity extends AppCompatActivity {
         map.getOverlays().add(locationOverlay);
 
         map.getController().setZoom(15.0);
+
+        // Add markers for recommended properties
+        addPropertyMarkers();
+    }
+
+    private void addPropertyMarkers() {
+        List<Property> properties = PropertyRepository.getInstance().getProperties();
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        Drawable houseIcon = ContextCompat.getDrawable(this, R.drawable.ic_house);
+
+        for (Property property : properties) {
+            String address = property.getLocation();
+            try {
+                List<Address> addresses = geocoder.getFromLocationName(address, 1);
+                if (addresses != null && !addresses.isEmpty()) {
+                    Address loc = addresses.get(0);
+                    GeoPoint point = new GeoPoint(loc.getLatitude(), loc.getLongitude());
+
+                    Marker marker = new Marker(map);
+                    marker.setPosition(point);
+                    marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                    marker.setTitle(property.getName());
+                    marker.setSnippet(property.getPrice() + "\n" + property.getLocation());
+                    
+                    if (houseIcon != null) {
+                        marker.setIcon(houseIcon);
+                    }
+                    
+                    map.getOverlays().add(marker);
+                }
+            } catch (IOException e) {
+                Log.e("MapActivity", "Error geocoding address: " + address, e);
+            }
+        }
+        map.invalidate(); // Refresh map
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        // This is important for osmdroid
         Configuration.getInstance().load(this, PreferenceManager.getDefaultSharedPreferences(this));
         if (map != null) {
             map.onResume();
@@ -69,7 +109,6 @@ public class MapActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();
-        // This is important for osmdroid
         Configuration.getInstance().save(this, PreferenceManager.getDefaultSharedPreferences(this));
         if (map != null) {
             map.onPause();

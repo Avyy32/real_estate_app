@@ -53,6 +53,14 @@ public class ProfileActivity extends AppCompatActivity {
         View menuLogout = findViewById(R.id.menuLogout);
         if (menuLogout != null) {
             ((TextView) menuLogout.findViewById(R.id.tvMenuTitle)).setText("Logout");
+            menuLogout.setOnClickListener(v -> {
+                // Navigate back to LoginActivity (the "Conquer" front page)
+                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                // Clear the back stack so user cannot go back to profile after logout
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            });
         }
 
         // Edit Profile Button
