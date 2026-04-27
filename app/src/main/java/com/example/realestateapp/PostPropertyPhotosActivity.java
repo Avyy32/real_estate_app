@@ -60,6 +60,11 @@ public class PostPropertyPhotosActivity extends AppCompatActivity {
             String desc = etDescription.getText().toString();
             if (desc.isEmpty()) desc = "No description provided.";
 
+            String listingType = "Resale";
+            if (repo.draftLookingTo != null && (repo.draftLookingTo.contains("Rent") || repo.draftLookingTo.contains("PG"))) {
+                listingType = "Rent";
+            }
+
             Property newProperty = new Property(
                     repo.draftPropertyType + " for " + (repo.draftLookingTo != null ? repo.draftLookingTo : "Sale"),
                     "Location not specified",
@@ -71,7 +76,8 @@ public class PostPropertyPhotosActivity extends AppCompatActivity {
                     "3 BHK",
                     repo.draftFloors,
                     "2,500 sqft",
-                    "Individual Owner"
+                    "Individual Owner",
+                    listingType
             );
 
             repo.addProperty(newProperty);

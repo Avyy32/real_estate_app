@@ -11,7 +11,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 import com.bumptech.glide.Glide;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 import java.util.List;
 
 public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.ViewHolder> {
@@ -40,15 +43,12 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.ViewHo
         holder.tvPrice.setText(property.getPrice());
         holder.tvArea.setText(property.getSqft() != null ? property.getSqft() : "N/A");
         holder.tvDealerName.setText(property.getDealerName() != null ? property.getDealerName() : "Unknown Dealer");
-        
-        // Price per sqft logic or dummy
-        holder.tvPricePerSqft.setText("₹ 26,013 /sqft");
+        holder.tvListingType.setText(property.getListingType() != null ? property.getListingType() : "Resale");
 
-        Glide.with(context)
-                .load(property.getImageUri())
-                .centerCrop()
-                .placeholder(android.R.drawable.ic_menu_gallery)
-                .into(holder.ivProperty);
+        ImagePagerAdapter imageAdapter = new ImagePagerAdapter(context, property.getAdditionalImages());
+        holder.viewPager.setAdapter(imageAdapter);
+        
+        new TabLayoutMediator(holder.tabLayout, holder.viewPager, (tab, pos) -> {}).attach();
 
         View.OnClickListener contactListener = v -> {
             Intent intent = new Intent(context, ShareDetailsActivity.class);
@@ -77,23 +77,67 @@ public class PropertyAdapter extends RecyclerView.Adapter<PropertyAdapter.ViewHo
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView ivProperty;
-        TextView tvType, tvSubTitle, tvPrice, tvPricePerSqft, tvArea, tvDealerName;
+        ViewPager2 viewPager;
+        TabLayout tabLayout;
+        TextView tvType, tvSubTitle, tvPrice, tvArea, tvDealerName, tvListingType;
         Button btnViewNumber;
         ImageButton btnWhatsapp, btnCall;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivProperty = itemView.findViewById(R.id.propertyImage);
+            viewPager = itemView.findViewById(R.id.propertyImagePager);
+            tabLayout = itemView.findViewById(R.id.tabLayout);
             tvType = itemView.findViewById(R.id.tvPropertyName);
             tvSubTitle = itemView.findViewById(R.id.tvPropertySubTitle);
             tvPrice = itemView.findViewById(R.id.tvPropertyPrice);
-            tvPricePerSqft = itemView.findViewById(R.id.tvPricePerSqft);
             tvArea = itemView.findViewById(R.id.tvPropertyArea);
             tvDealerName = itemView.findViewById(R.id.tvDealerName);
+            tvListingType = itemView.findViewById(R.id.tvListingType);
             btnViewNumber = itemView.findViewById(R.id.btnViewNumber);
             btnWhatsapp = itemView.findViewById(R.id.btnWhatsapp);
             btnCall = itemView.findViewById(R.id.btnCall);
+        }
+    }
+
+    private static class ImagePagerAdapter extends RecyclerView.Adapter<ImagePagerAdapter.ImageViewHolder> {
+        private final Context context;
+        private final List<String> images;
+
+        public ImagePagerAdapter(Context context, List<String> images) {
+            this.context = context;
+            this.images = images;
+        }
+
+        @NonNull
+        @Override
+        public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            ImageView imageView = new ImageView(context);
+            imageView.setLayoutParams(new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT));
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            return new ImageViewHolder(imageView);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
+            Glide.with(context)
+                    .load(images.get(position))
+                    .placeholder(android.R.drawable.ic_menu_gallery)
+                    .into(holder.imageView);
+        }
+
+        @Override
+        public int getItemCount() {
+            return images != null ? images.size() : 0;
+        }
+
+        static class ImageViewHolder extends RecyclerView.ViewHolder {
+            ImageView imageView;
+            public ImageViewHolder(@NonNull View itemView) {
+                super(itemView);
+                imageView = (ImageView) itemView;
+            }
         }
     }
 }
