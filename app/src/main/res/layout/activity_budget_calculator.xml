@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@android:drawable/ic_menu_revert" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Budget Calculator"
+                android:textColor="#001F3F"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!-- Savings Slider -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Savings for buying home"
+                    android:textColor="#1A1A1A" />
+                <TextView
+                    android:id="@+id/tvSavingsValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="₹ 20 Lacs"
+                    android:textColor="#1A1A1A"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderSavings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0"
+                android:valueTo="100"
+                android:value="20" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹ 0" android:textSize="10sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="₹ 10 Crores" android:textSize="10sp" />
+            </RelativeLayout>
+
+            <!-- EMI Slider -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EMI you can afford"
+                    android:textColor="#1A1A1A" />
+                <TextView
+                    android:id="@+id/tvEmiValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="₹ 20,000"
+                    android:textColor="#1A1A1A"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderEmi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="1000"
+                android:valueTo="100000"
+                android:value="20000" />
+
+            <!-- Tenure Slider -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferred loan tenure"
+                    android:textColor="#1A1A1A" />
+                <TextView
+                    android:id="@+id/tvTenureValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="20 years"
+                    android:textColor="#1A1A1A"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderTenure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="2"
+                android:valueTo="30"
+                android:value="20" />
+
+            <!-- Result Area -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Budget range you may consider*"
+                    android:textColor="#666666"
+                    android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/tvBudgetResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="₹ 40 - 45 Lacs"
+                    android:textColor="#1976D2"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

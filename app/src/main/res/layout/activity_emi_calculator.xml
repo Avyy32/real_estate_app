@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:navigationIcon="@android:drawable/ic_menu_revert" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EMI Calculator"
+                android:textColor="#001F3F"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_gravity="center"
+                android:text="Estimated EMI per month you may consider"
+                android:textColor="#666666"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tvEmiResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:text="₹ 28.26 lacs"
+                android:textColor="#1976D2"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <!-- Loan Amount Slider -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loan Amount"
+                    android:textColor="#1A1A1A" />
+                <TextView
+                    android:id="@+id/tvLoanAmountValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="₹ 24 Crores"
+                    android:textColor="#1A1A1A"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderLoanAmount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="1"
+                android:valueTo="100"
+                android:value="24" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹ 1 Lac" android:textSize="10sp" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:text="₹ 100 Crores" android:textSize="10sp" />
+            </RelativeLayout>
+
+            <!-- Interest Rate Slider -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Interest rate %"
+                    android:textColor="#1A1A1A" />
+                <TextView
+                    android:id="@+id/tvInterestRateValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="12.9%"
+                    android:textColor="#1A1A1A"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderInterestRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="7"
+                android:valueTo="15"
+                android:value="12.9" />
+
+            <!-- Tenure Slider -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Preferred loan tenure"
+                    android:textColor="#1A1A1A" />
+                <TextView
+                    android:id="@+id/tvEmiTenureValue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="19 years"
+                    android:textColor="#1A1A1A"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderEmiTenure"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="1"
+                android:valueTo="30"
+                android:value="19" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
