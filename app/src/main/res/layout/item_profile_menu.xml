@@ -11,10 +11,11 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <View
+    <ImageView
         android:id="@+id/ivMenuIcon"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:padding="8dp"
         android:background="@drawable/circle_placeholder"
         android:backgroundTint="#F0E8FF" />
 
@@ -25,7 +26,13 @@
         android:layout_marginStart="16dp"
         android:layout_weight="1"
         android:text="Account Settings"
-        android:textColor="@color/black"
+        android:textColor="?android:attr/textColorPrimary"
         android:textSize="16sp" />
+
+    <Switch
+        android:id="@+id/menuSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
 </LinearLayout>
