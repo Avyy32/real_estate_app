@@ -143,7 +143,35 @@
                 android:textColor="#1A1A1A"
                 android:textSize="16sp" />
         </LinearLayout>
+        <!-- OTP INPUT (HIDDEN INITIALLY) -->
+        <EditText
+            android:id="@+id/otpInput"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/edit_bg"
+            android:gravity="center_vertical"
+            android:hint="Enter OTP"
+            android:inputType="number"
+            android:paddingHorizontal="16dp"
+            android:textColor="#1A1A1A"
+            android:textSize="16sp"
+            android:visibility="gone" />
 
+        <!-- VERIFY BUTTON (HIDDEN INITIALLY) -->
+        <Button
+            android:id="@+id/btnVerify"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#34A853"
+            android:text="Verify OTP"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            app:cornerRadius="28dp" />
         <!-- CONTINUE -->
         <Button
             android:id="@+id/btnContinue"

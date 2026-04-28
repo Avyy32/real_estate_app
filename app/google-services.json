@@ -7,20 +7,12 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:330851681022:android:83155375b1d874bde35baf",
+        "mobilesdk_app_id": "1:330851681022:android:6ee2fa8956343ebbe35baf",
         "android_client_info": {
           "package_name": "com.example.realestateapp"
         }
       },
       "oauth_client": [
-        {
-          "client_id": "330851681022-7i6vemnr4cknemtagcg3og8u17u6bo2m.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.realestateapp",
-            "certificate_hash": "e9c89d9488f114afdd7969f8932b053d8f037423"
-          }
-        },
         {
           "client_id": "330851681022-ubef2rvdcl9s8i3tf984g13u9osetlfb.apps.googleusercontent.com",
           "client_type": 3
