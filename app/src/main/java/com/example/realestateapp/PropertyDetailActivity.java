@@ -1,6 +1,8 @@
 package com.example.realestateapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,5 +43,11 @@ public class PropertyDetailActivity extends AppCompatActivity {
 
         androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(v -> finish());
+
+        Button btnContactDealer = findViewById(R.id.btnContactDealer);
+        btnContactDealer.setOnClickListener(v -> {
+            Intent intent = new Intent(PropertyDetailActivity.this, ContactDealerActivity.class);
+            startActivity(intent);
+        });
     }
 }

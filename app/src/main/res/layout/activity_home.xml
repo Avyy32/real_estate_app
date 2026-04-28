@@ -24,6 +24,7 @@
                 android:layout_height="24dp"
                 android:layout_centerVertical="true"
                 android:src="@android:drawable/ic_menu_sort_by_size"
+                android:contentDescription="@string/dropdown_icon"
                 app:tint="#1A1A1A" />
 
             <LinearLayout
@@ -40,7 +41,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Post property "
+                    android:text="@string/post_property"
                     android:textColor="#1A1A1A"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -50,9 +51,9 @@
                     android:background="#4CAF50"
                     android:paddingHorizontal="4dp"
                     android:paddingVertical="1dp"
-                    android:text="FREE"
+                    android:text="@string/free"
                     android:textColor="#FFFFFF"
-                    android:textSize="10sp"
+                    android:textSize="11sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
@@ -62,6 +63,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:src="@android:drawable/ic_popup_reminder"
+                android:contentDescription="@string/dropdown_icon"
                 app:tint="#1A1A1A" />
         </RelativeLayout>
 
@@ -81,7 +83,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingVertical="16dp">
+                    android:paddingVertical="16dp"
+                    android:baselineAligned="false">
 
                     <LinearLayout
                         android:id="@+id/catBuy"
@@ -94,7 +97,14 @@
                         android:focusable="true"
                         android:background="?attr/selectableItemBackground">
                         <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@android:drawable/ic_menu_myplaces" app:tint="#1976D2" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Buy" android:textColor="#1A1A1A" android:textSize="12sp" android:layout_marginTop="4dp" android:textStyle="bold" />
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/buy"
+                        android:textColor="#1A1A1A"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp"
+                        android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -108,7 +118,14 @@
                         android:focusable="true"
                         android:background="?attr/selectableItemBackground">
                         <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@android:drawable/ic_menu_agenda" app:tint="#1976D2" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Rent" android:textColor="#1A1A1A" android:textSize="12sp" android:layout_marginTop="4dp" android:textStyle="bold" />
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/rent"
+                        android:textColor="#1A1A1A"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp"
+                        android:textStyle="bold" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -122,7 +139,14 @@
                         android:focusable="true"
                         android:background="?attr/selectableItemBackground">
                         <ImageView android:layout_width="28dp" android:layout_height="28dp" android:src="@android:drawable/ic_menu_view" app:tint="#1976D2" />
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Commercial" android:textColor="#1A1A1A" android:textSize="12sp" android:layout_marginTop="4dp" android:textStyle="bold" />
+                        <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/commercial"
+                        android:textColor="#1A1A1A"
+                        android:textSize="12sp"
+                        android:layout_marginTop="4dp"
+                        android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -143,7 +167,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|start"
                         android:layout_margin="16dp"
-                        android:text="#KabTak\nPuchoge"
+                        android:text="@string/kab_tak_puchoge"
                         android:textColor="#FFFFFF"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -161,21 +185,16 @@
                     app:cardElevation="4dp"
                     android:clickable="true"
                     android:focusable="true">
-                    <LinearLayout
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="16dp">
-                        <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@android:drawable/ic_menu_search" app:tint="#888888" />
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:text='Search "3 BHK in Noida" or "1.5 Cr"'
-                            android:textColor="#888888"
-                            android:textSize="14sp" />
-                    </LinearLayout>
+                        android:text="@string/home_search_hint"
+                        android:textColor="#888888"
+                        android:textSize="14sp"
+                        app:drawableStartCompat="@android:drawable/ic_menu_search"
+                        android:drawablePadding="12dp"
+                        app:drawableTint="#888888" />
                 </androidx.cardview.widget.CardView>
 
                 <!-- Recommended Section -->
@@ -183,7 +202,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:text="Recommended Properties"
+                    android:text="@string/recommended_properties"
                     android:textColor="#001233"
                     android:textSize="20sp"
                     android:textStyle="bold" />
@@ -191,7 +210,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:text="Curated especially for you"
+                    android:text="@string/curated_for_you"
                     android:textColor="#888888"
                     android:textSize="14sp" />
 
@@ -233,14 +252,14 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Newly launched projects"
+                                android:text="@string/newly_launched_projects"
                                 android:textColor="#1A1A1A"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Best prices • Unit of choice • Easy payment plans"
+                                android:text="@string/launch_description"
                                 android:textColor="#666666"
                                 android:textSize="12sp" />
                         </LinearLayout>
@@ -285,14 +304,14 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Use popular tools"
+                                android:text="@string/use_popular_tools"
                                 android:textColor="#1A1A1A"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Go from browsing to buying"
+                                android:text="@string/go_from_browsing_to_buying"
                                 android:textColor="#666666"
                                 android:textSize="12sp" />
                         </LinearLayout>
@@ -328,7 +347,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="12dp"
-                                    android:text="Budget Calculator →"
+                                    android:text="@string/budget_calculator_arrow"
                                     android:textColor="#1A1A1A"
                                     android:textStyle="bold"
                                     android:gravity="center" />
@@ -336,9 +355,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="Check your affordability range"
+                                    android:text="@string/check_affordability"
                                     android:textColor="#666666"
-                                    android:textSize="10sp"
+                                    android:textSize="11sp"
                                     android:gravity="center" />
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
@@ -365,7 +384,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="12dp"
-                                    android:text="EMI Calculator →"
+                                    android:text="@string/emi_calculator_arrow"
                                     android:textColor="#1A1A1A"
                                     android:textStyle="bold"
                                     android:gravity="center" />
@@ -373,9 +392,9 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
-                                    android:text="Calculate your monthly home loan"
+                                    android:text="@string/calculate_monthly_loan"
                                     android:textColor="#666666"
-                                    android:textSize="10sp"
+                                    android:textSize="11sp"
                                     android:gravity="center" />
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
