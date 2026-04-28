@@ -46,7 +46,6 @@ public class MapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_map);
 
         map = findViewById(R.id.mapView);
-        map.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         map.setTileSource(TileSourceFactory.MAPNIK);
         map.setMultiTouchControls(true);
 
@@ -67,43 +66,47 @@ public class MapActivity extends AppCompatActivity {
     }
 
     private void addPropertyMarkers() {
-        List<Property> properties = PropertyRepository.getInstance().getProperties();
-        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-        Drawable houseIcon = ContextCompat.getDrawable(this, R.drawable.ic_house);
+        new Thread(() -> {
+            List<Property> properties = PropertyRepository.getInstance().getProperties();
+            Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+            Drawable houseIcon = ContextCompat.getDrawable(this, R.drawable.ic_house);
 
-        for (Property property : properties) {
-            String address = property.getLocation();
-            try {
-                List<Address> addresses = geocoder.getFromLocationName(address, 1);
-                if (addresses != null && !addresses.isEmpty()) {
-                    Address loc = addresses.get(0);
-                    GeoPoint point = new GeoPoint(loc.getLatitude(), loc.getLongitude());
+            for (Property property : properties) {
+                String address = property.getLocation();
+                try {
+                    List<Address> addresses = geocoder.getFromLocationName(address, 1);
+                    if (addresses != null && !addresses.isEmpty()) {
+                        Address loc = addresses.get(0);
+                        GeoPoint point = new GeoPoint(loc.getLatitude(), loc.getLongitude());
 
-                    Marker marker = new Marker(map);
-                    marker.setPosition(point);
-                    marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-                    marker.setTitle(property.getName());
-                    marker.setSnippet(property.getPrice() + "\n" + property.getLocation());
-                    
-                    if (houseIcon != null) {
-                        marker.setIcon(houseIcon);
+                        runOnUiThread(() -> {
+                            Marker marker = new Marker(map);
+                            marker.setPosition(point);
+                            marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                            marker.setTitle(property.getName());
+                            marker.setSnippet(property.getPrice() + "\n" + property.getLocation());
+
+                            if (houseIcon != null) {
+                                marker.setIcon(houseIcon);
+                            }
+
+                            // Handle marker click to open PropertyDetailActivity
+                            marker.setOnMarkerClickListener((m, mapView) -> {
+                                Intent intent = new Intent(MapActivity.this, PropertyDetailActivity.class);
+                                intent.putExtra("property", property);
+                                startActivity(intent);
+                                return true; // Return true to consume the event
+                            });
+
+                            map.getOverlays().add(marker);
+                            map.invalidate(); // Refresh map
+                        });
                     }
-
-                    // Handle marker click to open PropertyDetailActivity
-                    marker.setOnMarkerClickListener((m, mapView) -> {
-                        Intent intent = new Intent(MapActivity.this, PropertyDetailActivity.class);
-                        intent.putExtra("property", property);
-                        startActivity(intent);
-                        return true; // Return true to consume the event
-                    });
-                    
-                    map.getOverlays().add(marker);
+                } catch (IOException e) {
+                    Log.e("MapActivity", "Error geocoding address: " + address, e);
                 }
-            } catch (IOException e) {
-                Log.e("MapActivity", "Error geocoding address: " + address, e);
             }
-        }
-        map.invalidate(); // Refresh map
+        }).start();
     }
 
     @Override

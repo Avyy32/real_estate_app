@@ -27,10 +27,13 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        // Load Banner
+        // Load Banner - Using a high-quality luxury home image
         ImageView ivBanner = findViewById(R.id.ivBanner);
         if (ivBanner != null) {
-            Glide.with(this).load("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab").centerCrop().into(ivBanner);
+            Glide.with(this)
+                .load("https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1600&q=80")
+                .centerCrop()
+                .into(ivBanner);
         }
 
         // Setup Adapters
