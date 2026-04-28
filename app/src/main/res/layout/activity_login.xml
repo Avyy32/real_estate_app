@@ -48,10 +48,10 @@
 
                 <ImageView
                     android:id="@+id/ivLoginLogo"
-                    android:layout_width="180dp"
-                    android:layout_height="180dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/logo"
+                    android:src="@drawable/login_img"
                     android:contentDescription="@string/logo_image" />
             </FrameLayout>
         </com.google.android.material.card.MaterialCardView>
