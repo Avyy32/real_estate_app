@@ -2,6 +2,7 @@ package com.example.realestateapp;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
@@ -87,6 +88,14 @@ public class MapActivity extends AppCompatActivity {
                     if (houseIcon != null) {
                         marker.setIcon(houseIcon);
                     }
+
+                    // Handle marker click to open PropertyDetailActivity
+                    marker.setOnMarkerClickListener((m, mapView) -> {
+                        Intent intent = new Intent(MapActivity.this, PropertyDetailActivity.class);
+                        intent.putExtra("property", property);
+                        startActivity(intent);
+                        return true; // Return true to consume the event
+                    });
                     
                     map.getOverlays().add(marker);
                 }
