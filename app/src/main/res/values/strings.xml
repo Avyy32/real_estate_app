@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Conqueror</string>
+
+    <!-- FIX: Added missing Web Client ID to resolve build error -->
+    <string name="default_web_client_id">YOUR_WEB_CLIENT_ID_HERE</string>
+
     <string name="log_in">Log In</string>
     <string name="sign_in_to_continue">Sign in to continue to Conqueror</string>
     <string name="email">Email</string>
@@ -61,4 +65,37 @@
     <string name="send_inquiry">Send Inquiry</string>
 
     <string name="login_catchy_line">Unlock the door to your dream home.</string>
+    <string name="dropdown_icon">▼</string>
+    <string name="post_property">Post Property</string>
+    <string name="free">Free</string>
+    <string name="commercial">Commercial</string>
+    <string name="kab_tak_puchoge">Kab tak puchoge?</string>
+    <string name="home_search_hint">Search for flats, houses...</string>
+    <string name="recommended_properties">Recommended Properties</string>
+    <string name="curated_for_you">Curated for you</string>
+    <string name="newly_launched_projects">Newly Launched Projects</string>
+    <string name="launch_description">Latest projects in your area</string>
+    <string name="use_popular_tools">Use Popular Tools</string>
+    <string name="go_from_browsing_to_buying">Go from browsing to buying</string>
+    <string name="budget_calculator_arrow">Budget Calculator →</string>
+    <string name="check_affordability">Check affordability</string>
+    <string name="emi_calculator_arrow">EMI Calculator →</string>
+    <string name="calculate_monthly_loan">Calculate monthly loan</string>
+
+    <string name="conquer">Conquer</string>
+    <string name="background_gif">Background</string>
+    <string name="logo_image">Logo</string>
+    <string name="login_insights">Find your dream property easily</string>
+    <string name="login_sub_insights">Search, compare and connect with dealers</string>
+
+    <string name="login_register_title">Login / Register</string>
+    <string name="login_register_sub">Enter your phone number to continue</string>
+
+    <string name="country_code_plus_91">+91</string>
+    <string name="enter_phone_number">Enter Phone Number</string>
+
+    <string name="continue_text">Continue</string>
+    <string name="do_it_later">Do it later</string>
+
+    <string name="discover">Discover</string>
 </resources>
