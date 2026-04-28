@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">realestateapp</string>
+    <string name="app_name">Conqueror</string>
     <string name="log_in">Log In</string>
-    <string name="sign_in_to_continue">Sign in to continue to Conquer</string>
+    <string name="sign_in_to_continue">Sign in to continue to Conqueror</string>
     <string name="email">Email</string>
     <string name="email_placeholder">your@email.com</string>
     <string name="password">Password</string>
