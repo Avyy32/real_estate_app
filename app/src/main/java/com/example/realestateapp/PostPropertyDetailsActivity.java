@@ -7,9 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.material.chip.Chip;
-import com.google.android.material.chip.ChipGroup;
 
 public class PostPropertyDetailsActivity extends AppCompatActivity {
 
@@ -23,6 +22,9 @@ public class PostPropertyDetailsActivity extends AppCompatActivity {
         LinearLayout layoutSellDetails = findViewById(R.id.layoutSellDetails);
         TextView tvPriceHeader = findViewById(R.id.tvPriceHeader);
         EditText etPrice = findViewById(R.id.etExpectedPrice);
+        EditText etAddress = findViewById(R.id.etAddress);
+        EditText etTotalFloors = findViewById(R.id.etTotalFloors);
+        EditText etPropFloor = findViewById(R.id.etPropertyOnFloor);
 
         // Dynamically change Step 2 based on Step 1 selection
         if ("Sell".equalsIgnoreCase(repo.draftLookingTo)) {
@@ -36,11 +38,21 @@ public class PostPropertyDetailsActivity extends AppCompatActivity {
 
         Button btnNext = findViewById(R.id.btnNextStep);
         btnNext.setOnClickListener(v -> {
-            EditText etTotalFloors = findViewById(R.id.etTotalFloors);
-            EditText etPropFloor = findViewById(R.id.etPropertyOnFloor);
+            String address = etAddress.getText().toString();
+            String price = etPrice.getText().toString();
             
+            if (address.isEmpty()) {
+                Toast.makeText(this, "Please enter property address", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (price.isEmpty()) {
+                Toast.makeText(this, "Please enter expected price/rent", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            repo.draftAddress = address;
             repo.draftFloors = etPropFloor.getText().toString() + " of " + etTotalFloors.getText().toString();
-            repo.draftPrice = "₹ " + etPrice.getText().toString();
+            repo.draftPrice = "₹ " + price + ("Sell".equalsIgnoreCase(repo.draftLookingTo) ? "" : "/mo");
 
             Intent intent = new Intent(PostPropertyDetailsActivity.this, PostPropertyPhotosActivity.class);
             startActivity(intent);

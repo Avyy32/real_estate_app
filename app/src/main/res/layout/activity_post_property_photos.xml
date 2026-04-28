@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Photos &amp; Details"
-                android:textColor="#001233"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="STEP 3 OF 3"
-                android:textColor="#8D99AE"
+                android:textColor="@color/black"
                 android:textSize="10sp"
                 android:textStyle="bold" />
 
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="Add one property video"
-                android:textColor="#001233"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Add property photos (Optional)"
-                android:textColor="#001233"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -154,7 +154,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="Furnishing (Optional)"
-                android:textColor="#001233"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -198,14 +198,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="What makes your property unique"
-                android:textColor="#001233"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Adding description will increase your listing visibility"
-                android:textColor="#8D99AE"
+                android:textColor="@color/black"
                 android:textSize="11sp" />
 
             <EditText
@@ -217,6 +217,7 @@
                 android:gravity="top"
                 android:hint="Share some details about your property like spacious rooms, well maintained facilities.."
                 android:padding="12dp"
+                android:textColor="@color/black"
                 android:textSize="14sp" />
 
             <TextView
@@ -234,7 +235,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="Add Email (Optional)"
-                android:textColor="#001233"
+                android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -246,7 +247,8 @@
                 android:background="@drawable/edit_text_bg"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                android:paddingHorizontal="16dp" />
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
 
         </LinearLayout>
     </ScrollView>

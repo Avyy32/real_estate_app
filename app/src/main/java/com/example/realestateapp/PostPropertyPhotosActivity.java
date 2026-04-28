@@ -17,6 +17,7 @@ import java.util.List;
 public class PostPropertyPhotosActivity extends AppCompatActivity {
 
     private final List<Uri> selectedImageUris = new ArrayList<>();
+    private Uri selectedVideoUri = null;
     
     private final ActivityResultLauncher<Intent> galleryLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -37,12 +38,23 @@ public class PostPropertyPhotosActivity extends AppCompatActivity {
             }
     );
 
+    private final ActivityResultLauncher<Intent> videoLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    selectedVideoUri = result.getData().getData();
+                    Toast.makeText(this, "Video Selected", Toast.LENGTH_SHORT).show();
+                }
+            }
+    );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_property_photos);
 
         CardView btnUploadPhotos = findViewById(R.id.btnUploadPhotos);
+        CardView btnUploadVideo = findViewById(R.id.btnUploadVideo);
         Button btnFinish = findViewById(R.id.btnFinish);
         EditText etDescription = findViewById(R.id.etDescription);
 
@@ -53,10 +65,24 @@ public class PostPropertyPhotosActivity extends AppCompatActivity {
             galleryLauncher.launch(Intent.createChooser(intent, "Select Photos"));
         });
 
+        btnUploadVideo.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+            intent.setType("video/*");
+            videoLauncher.launch(Intent.createChooser(intent, "Select Video"));
+        });
+
         btnFinish.setOnClickListener(v -> {
+            if (selectedImageUris.isEmpty() && selectedVideoUri == null) {
+                Toast.makeText(this, "Please upload at least one photo or video", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             PropertyRepository repo = PropertyRepository.getInstance();
             
-            String imagePath = !selectedImageUris.isEmpty() ? selectedImageUris.get(0).toString() : "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80";
+            // Use selected image or a placeholder if only video is selected
+            String imagePath = !selectedImageUris.isEmpty() ? selectedImageUris.get(0).toString() : 
+                    (selectedVideoUri != null ? selectedVideoUri.toString() : "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80");
+            
             String desc = etDescription.getText().toString();
             if (desc.isEmpty()) desc = "No description provided.";
 
@@ -67,13 +93,13 @@ public class PostPropertyPhotosActivity extends AppCompatActivity {
 
             Property newProperty = new Property(
                     repo.draftPropertyType + " for " + (repo.draftLookingTo != null ? repo.draftLookingTo : "Sale"),
-                    "Location not specified",
+                    repo.draftAddress != null ? repo.draftAddress : "Location not specified",
                     repo.draftPrice != null ? repo.draftPrice : "Price on request",
                     imagePath,
                     desc,
                     repo.draftPropertyType,
                     repo.draftLookingTo,
-                    "3 BHK",
+                    repo.draftBHK != null ? repo.draftBHK : "3 BHK",
                     repo.draftFloors,
                     "2,500 sqft",
                     "Individual Owner",

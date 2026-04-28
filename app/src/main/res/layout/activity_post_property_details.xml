@@ -51,7 +51,27 @@
                 android:textSize="10sp"
                 android:textStyle="bold" />
 
-            <!-- Common for both Sell and Rent -->
+            <!-- Location Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Location / Address"
+                android:textColor="#001F3F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etAddress"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/edit_text_bg"
+                android:hint="Enter Area / Society / City"
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
+
+            <!-- Floors Section -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,7 +87,8 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/edit_text_bg"
                 android:hint="Total Floors"
-                android:paddingHorizontal="16dp" />
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
 
             <EditText
                 android:id="@+id/etPropertyOnFloor"
@@ -76,7 +97,8 @@
                 android:layout_marginTop="12dp"
                 android:background="@drawable/edit_text_bg"
                 android:hint="Property on floor"
-                android:paddingHorizontal="16dp" />
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -182,7 +204,8 @@
                 android:background="@drawable/edit_text_bg"
                 android:hint="₹ Expected Price"
                 android:inputType="number"
-                android:paddingHorizontal="16dp" />
+                android:paddingHorizontal="16dp"
+                android:textColor="@color/black" />
 
             <CheckBox
                 android:id="@+id/cbAllInclusive"

@@ -82,6 +82,7 @@
             android:hint="Your Name"
             android:inputType="textPersonName"
             android:paddingHorizontal="16dp"
+            android:textColor="@color/black"
             android:layout_marginBottom="20dp" />
 
         <TextView
@@ -99,6 +100,7 @@
             android:hint="Your Email"
             android:inputType="textEmailAddress"
             android:paddingHorizontal="16dp"
+            android:textColor="@color/black"
             android:layout_marginBottom="20dp" />
 
         <TextView
@@ -116,6 +118,7 @@
             android:hint="Mobile Number"
             android:inputType="phone"
             android:paddingHorizontal="16dp"
+            android:textColor="@color/black"
             android:layout_marginBottom="20dp" />
 
         <TextView
@@ -133,6 +136,7 @@
             android:hint="Your Location"
             android:inputType="text"
             android:paddingHorizontal="16dp"
+            android:textColor="@color/black"
             android:layout_marginBottom="32dp" />
 
         <Button

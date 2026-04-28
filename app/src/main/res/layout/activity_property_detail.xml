@@ -8,22 +8,30 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_height="300dp"
+        android:background="@color/white">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="@color/primary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <ImageView
-                android:id="@+id/propertyImage"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/detailImagePager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:src="@android:drawable/ic_menu_gallery"
                 app:layout_collapseMode="parallax" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/detailTabLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="60dp"
+                app:tabBackground="@drawable/dot_selector"
+                app:tabGravity="center"
+                app:tabIndicatorHeight="0dp"
+                app:tabMaxWidth="10dp" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -32,123 +40,297 @@
                 app:layout_collapseMode="pin"
                 app:navigationIcon="@android:drawable/ic_menu_revert" />
 
+            <!-- Dealer overlay on image with background for visibility -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="16dp"
+                android:background="#80000000"
+                android:padding="8dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:id="@+id/ivDetailDealerAvatar"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/circle_placeholder"
+                    android:src="@android:drawable/ic_menu_myplaces" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tvDetailDealerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chirag Goyal"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/tvDetailDaysAgo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5 days ago"
+                        android:textColor="@color/white"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/rounded_top_white"
+        android:layout_marginTop="-20dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="20dp">
 
             <TextView
-                android:id="@+id/tvPropertyName"
+                android:id="@+id/tvDetailPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Modern Family House"
-                android:textColor="#001F3F"
-                android:textSize="26sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvPropertyLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Sector 27, Gurgaon"
-                android:textColor="#666666"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tvPropertyPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="₹ 2.45 Cr"
-                android:textColor="@color/primary"
+                android:text="₹ 6 Crore"
+                android:textColor="#000000"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <!-- Dynamic Property Stats -->
+            <TextView
+                android:id="@+id/tvPriceInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Negotiable, 1% brokerage"
+                android:textColor="#666666"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp">
+                <TextView
+                    android:id="@+id/tagReady"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#F0F0F0"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="Ready To Move"
+                    android:textSize="11sp"
+                    android:textColor="#666666" />
+                <TextView
+                    android:id="@+id/tagFurnishing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="#F0F0F0"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:text="Semifurnished"
+                    android:textSize="11sp"
+                    android:textColor="#666666" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvListingInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Independent House/Villa for Resale in"
+                android:textColor="#666666"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvDetailName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Authority Plots &amp; kothi"
+                android:textColor="#001F3F"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDetailLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sector 52, Noida"
+                android:textColor="#001F3F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Places Nearby -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="49 Places\nNearby"
+                    android:textColor="#000000"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+                <View android:layout_width="1dp" android:layout_height="30dp" android:background="#DDDDDD" android:layout_marginHorizontal="12dp" />
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none">
+                    <LinearLayout
+                        android:id="@+id/layoutNearbyPlaces"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <!-- Dynamic nearby places chips -->
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <!-- Quick Stats Icons -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BHK" android:textColor="#999999" android:textSize="12sp" />
-                    <TextView android:id="@+id/tvBhk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3 BHK" android:textColor="#001F3F" android:textStyle="bold" />
+                android:orientation="horizontal"
+                android:gravity="center">
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                    <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@android:drawable/ic_menu_sort_by_size" app:tint="#1976D2" android:background="@drawable/circle_placeholder" android:padding="6dp" />
+                    <TextView android:id="@+id/tvStatBhk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="9 BHK and 9 baths" android:gravity="center" android:textSize="10sp" android:layout_marginTop="8dp" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Type" android:textColor="#999999" android:textSize="12sp" />
-                    <TextView android:id="@+id/tvType" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Apartment" android:textColor="#001F3F" android:textStyle="bold" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                    <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@android:drawable/ic_menu_compass" app:tint="#D48806" android:background="@drawable/circle_placeholder" android:padding="6dp" />
+                    <TextView android:id="@+id/tvStatArea" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="200 sq.m. Super Area" android:gravity="center" android:textSize="10sp" android:layout_marginTop="8dp" />
                 </LinearLayout>
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Floors" android:textColor="#999999" android:textSize="12sp" />
-                    <TextView android:id="@+id/tvFloors" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 Floors" android:textColor="#001F3F" android:textStyle="bold" />
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                    <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@android:drawable/ic_menu_send" app:tint="#D48806" android:background="@drawable/circle_placeholder" android:padding="6dp" />
+                    <TextView android:id="@+id/tvStatPriceSqft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="₹ 3 Lac / sq.m." android:gravity="center" android:textSize="10sp" android:layout_marginTop="8dp" />
+                </LinearLayout>
+                <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
+                    <ImageView android:layout_width="32dp" android:layout_height="32dp" android:src="@android:drawable/ic_menu_today" app:tint="#4CAF50" android:background="@drawable/circle_placeholder" android:padding="6dp" />
+                    <TextView android:id="@+id/tvStatAge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5-10 Year Old Property" android:gravity="center" android:textSize="10sp" android:layout_marginTop="8dp" />
                 </LinearLayout>
             </LinearLayout>
 
-            <View
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE" android:layout_marginVertical="24dp" />
+
+            <!-- Essential Facilities -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Essential Facilities" android:textColor="#001F3F" android:textSize="18sp" android:textStyle="bold" />
+            <GridLayout
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginVertical="24dp"
-                android:background="#EEEEEE" />
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Description"
-                android:textColor="#001F3F"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="16dp"
+                android:columnCount="2">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reserved Parking" android:drawablePadding="8dp" app:drawableStartCompat="@android:drawable/ic_menu_myplaces" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Security Guard" android:drawablePadding="8dp" app:drawableStartCompat="@android:drawable/ic_menu_view" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 Covered Parking" android:layout_marginTop="12dp" android:drawablePadding="8dp" app:drawableStartCompat="@android:drawable/ic_menu_myplaces" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 Open Parking" android:layout_marginTop="12dp" android:drawablePadding="8dp" app:drawableStartCompat="@android:drawable/ic_menu_myplaces" />
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="In a Gated Society" android:layout_marginTop="12dp" android:drawablePadding="8dp" app:drawableStartCompat="@android:drawable/ic_menu_sort_by_size" />
+            </GridLayout>
 
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="#EEEEEE" android:layout_marginVertical="24dp" />
+
+            <!-- Property Details Table -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Property Details" android:textColor="#001F3F" android:textSize="18sp" android:textStyle="bold" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp">
+                <TableRow android:paddingVertical="8dp">
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:text="Layout" android:textColor="#999999" />
+                    <TextView android:id="@+id/tableLayout" android:layout_width="0dp" android:layout_weight="2" android:text="9 BHK, 9 Baths..." android:textColor="#000000" android:textStyle="bold" />
+                </TableRow>
+                <TableRow android:paddingVertical="8dp">
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:text="Ownership" android:textColor="#999999" />
+                    <TextView android:id="@+id/tableOwnership" android:layout_width="0dp" android:layout_weight="2" android:text="Leasehold" android:textColor="#000000" android:textStyle="bold" />
+                </TableRow>
+                <TableRow android:paddingVertical="8dp">
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:text="Super Area" android:textColor="#999999" />
+                    <TextView android:id="@+id/tableSuperArea" android:layout_width="0dp" android:layout_weight="2" android:text="2152.78 sq.ft." android:textColor="#000000" android:textStyle="bold" />
+                </TableRow>
+                <TableRow android:paddingVertical="8dp">
+                    <TextView android:layout_width="0dp" android:layout_weight="1" android:text="Facing" android:textColor="#999999" />
+                    <TextView android:id="@+id/tableFacing" android:layout_width="0dp" android:layout_weight="2" android:text="South-East" android:textColor="#000000" android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
+
+            <!-- Description -->
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="Description" android:textColor="#001F3F" android:textSize="18sp" android:textStyle="bold" />
             <TextView
-                android:id="@+id/tvPropertyDescription"
+                android:id="@+id/tvDetailDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:lineSpacingExtra="6dp"
-                android:text="No description provided."
-                android:textColor="#555555"
-                android:textSize="15sp" />
+                android:lineSpacingExtra="4dp"
+                android:text="This exceptional property..."
+                android:textColor="#666666" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginVertical="24dp"
-                android:background="#EEEEEE" />
-
-            <Button
-                android:id="@+id/btnContactDealer"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:backgroundTint="@color/primary"
-                android:text="Contact Dealer"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:cornerRadius="12dp" />
+            <View android:layout_width="match_parent" android:layout_height="100dp" /> <!-- Bottom padding -->
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Action Bar -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:cardElevation="16dp"
+        app:cardCornerRadius="0dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="72dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="16dp"
+            android:gravity="center_vertical">
+
+            <Button
+                android:id="@+id/btnDetailWhatsapp"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:text="WhatsApp"
+                android:textAllCaps="false"
+                android:textColor="#25D366"
+                android:paddingHorizontal="12dp"
+                app:strokeColor="#25D366"
+                app:icon="@android:drawable/ic_menu_send"
+                app:iconTint="#25D366"
+                app:cornerRadius="24dp" />
+
+            <Button
+                android:id="@+id/btnDetailViewNumber"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1.2"
+                android:layout_marginHorizontal="8dp"
+                android:backgroundTint="#1976D2"
+                android:text="View Number"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:cornerRadius="24dp" />
+
+            <ImageButton
+                android:id="@+id/btnDetailCall"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/circle_placeholder"
+                android:backgroundTint="#1976D2"
+                android:src="@android:drawable/ic_menu_call"
+                app:tint="@color/white" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

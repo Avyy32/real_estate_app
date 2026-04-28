@@ -21,8 +21,9 @@ public class SignupActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> finish());
 
         btnCreateAccount.setOnClickListener(v -> {
-            Intent intent = new Intent(SignupActivity.this, ProfileActivity.class);
+            Intent intent = new Intent(SignupActivity.this, AccountSettingsActivity.class);
             startActivity(intent);
+            finish();
         });
 
         tvLoginLink.setOnClickListener(v -> finish());

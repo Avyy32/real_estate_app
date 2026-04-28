@@ -38,6 +38,10 @@ public class ShareDetailsActivity extends AppCompatActivity {
             btnSubmit.setText("Call");
         }
 
+        // Set text color to black
+        etName.setTextColor(getResources().getColor(android.R.color.black));
+        etPhone.setTextColor(getResources().getColor(android.R.color.black));
+
         if (toggleGroup != null) {
             toggleGroup.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
                 if (isChecked) {
