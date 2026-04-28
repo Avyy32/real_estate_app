@@ -11,8 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
+        app:contentInsetStart="0dp"
         app:contentInsetStartWithNavigation="0dp"
-        app:navigationIcon="@android:drawable/ic_menu_revert">
+        app:navigationIcon="@android:drawable/ic_menu_revert"
+        app:title="">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="30dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="35dp"
                 android:text="zZZ"
                 android:textColor="#5C6BC0"
                 android:textSize="20sp"
